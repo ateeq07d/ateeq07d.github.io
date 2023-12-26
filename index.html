@@ -38,9 +38,28 @@
     <link rel="canonical" href="https://iuricode.com/" />
     <script src="assets/js/svg-inject.min.js"></script>
     <title>Mohammed Ateeq</title>
+    <style>
+      body {
+        cursor: none; /* Hide the default cursor */
+      }
+    
+      /* Define the custom cursor */
+      .custom-cursor {
+        width: 20px;
+        height: 20px;
+        background-color: #FF0000; /* Set the cursor color */
+        border-radius: 50%;
+        position: absolute;
+        pointer-events: none; /* Ensure the cursor doesn't interfere with mouse events on underlying elements */
+        transform: translate(-50%, -50%); /* Center the cursor on the mouse pointer */
+      }
+    </style>
   </head>
 
   <body>
+
+  <!-- The custom cursor element -->
+<div class="custom-cursor"></div>
     <header>
       <div class="grid-layout">
         <nav>
@@ -567,6 +586,16 @@
       </footer>
     </main>
 
+    <script>
+      // Get the custom cursor element
+      var customCursor = document.querySelector('.custom-cursor');
+    
+      // Update the position of the custom cursor based on mouse movement
+      document.addEventListener('mousemove', function (e) {
+        customCursor.style.left = e.clientX + 'px';
+        customCursor.style.top = e.clientY + 'px';
+      });
+    </script>
    <script type="importmap">
 			{
 				"imports": {
@@ -676,7 +705,7 @@
 				requestAnimationFrame( animate );
 
 				render();
-				stats.update();
+				// stats.update();
 
 			}
 
@@ -695,6 +724,8 @@
 			}
 
 		</script>
+
+
     <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
     <script type="module" src="assets/js/main.js"></script>
   </body>
